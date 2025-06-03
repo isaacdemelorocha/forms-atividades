@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultoria Solução de Aprendizagem</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --background-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #212529;
+      --border-radius: 0.5rem;
+      --input-focus-color: #0056b3;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--input-focus-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary-color);
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    .section-bg {
+      background-color: #e9ecef;
+      padding: 1rem 1.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-textarea {
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="text-center mb-4">Formulário de Consultoria em Solução de Aprendizagem</h1>
+    
+    <form id="formulario">
+      <!-- 1. Diagnóstico do Contexto -->
+      <div class="card">
+        <h2>1. Diagnóstico do Contexto</h2>
+        <div class="mb-3">
+          <label for="organizationalContext" class="form-label">Qual o contexto organizacional e cultural que pode impactar a aprendizagem?</label>
+          <textarea id="organizationalContext" name="organizationalContext" class="form-control form-textarea" placeholder="Descreva o contexto organizacional e cultural"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="organizationalBarriers" class="form-label">Quais barreiras culturais ou organizacionais podem dificultar a mudança?</label>
+          <textarea id="organizationalBarriers" name="organizationalBarriers" class="form-control form-textarea" placeholder="Identifique barreiras culturais ou organizacionais"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="strategyAlignment" class="form-label">Como o treinamento se alinha à estratégia geral da empresa?</label>
+          <textarea id="strategyAlignment" name="strategyAlignment" class="form-control form-textarea" placeholder="Descreva o alinhamento estratégico"></textarea>
+        </div>
+      </div>
+
+      <!-- 2. Público-alvo e necessidades -->
+      <div class="card">
+        <h2>2. Público-alvo e Necessidades</h2>
+        <div class="mb-3">
+          <label for="audienceProfiles" class="form-label">Quais perfis e características do público-alvo? (nível, função, idioma, limitações)</label>
+          <textarea id="audienceProfiles" name="audienceProfiles" class="form-control form-textarea" placeholder="Descreva os perfis do público-alvo"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="learningStyles" class="form-label">Quais são os estilos de aprendizagem preferidos?</label>
+          <textarea id="learningStyles" name="learningStyles" class="form-control form-textarea" placeholder="Ex: visual, auditivo, kinestésico"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="limitations" class="form-label">Há limitações físicas, cognitivas ou tecnológicas?</label>
+          <textarea id="limitations" name="limitations" class="form-control form-textarea" placeholder="Descreva limitações do público"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="motivationLevel" class="form-label">Qual o nível atual de motivação e engajamento para o tema?</label>
+          <select id="motivationLevel" name="motivationLevel" class="form-select">
+            <option value="" selected>Selecione...</option>
+            <option value="alto">Alto</option>
+            <option value="médio">Médio</option>
+            <option value="baixo">Baixo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 3. Objetivos de aprendizagem -->
+      <div class="card">
+        <h2>3. Objetivos de Aprendizagem</h2>
+        <div class="mb-3">
+          <label for="businessProblem" class="form-label">Qual o problema ou oportunidade de negócio?</label>
+          <textarea id="businessProblem" name="businessProblem" class="form-control form-textarea" placeholder="Descreva o problema ou oportunidade"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="trainingProblem" class="form-label">Esse problema é realmente de capacitação? Explique.</label>
+          <textarea id="trainingProblem" name="trainingProblem" class="form-control form-textarea" placeholder="Justifique se o problema é de capacitação"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="metricsImpacted" class="form-label">Quais métricas de negócio são impactadas?</label>
+          <textarea id="metricsImpacted" name="metricsImpacted" class="form-control form-textarea" placeholder="Ex: produtividade, vendas, satisfação"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="specificObjectives" class="form-label">Quais competências específicas precisam ser desenvolvidas? (conhecimentos, habilidades, atitudes)</label>
+          <textarea id="specificObjectives" name="specificObjectives" class="form-control form-textarea" placeholder="Liste os objetivos de aprendizagem"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="successCriteria" class="form-label">Como será medido o sucesso da aprendizagem?</label>
+          <textarea id="successCriteria" name="successCriteria" class="form-control form-textarea" placeholder="Defina critérios para avaliação"></textarea>
+        </div>
+      </div>
+
+      <!-- 4. Metodologias e formatos -->
+      <div class="card">
+        <h2>4. Metodologias e Formatos</h2>
+        <div class="mb-3">
+          <label for="preferredFormats" class="form-label">Quais formatos são mais adequados? (presencial, e-learning, blended, microlearning)</label>
+          <textarea id="preferredFormats" name="preferredFormats" class="form-control form-textarea" placeholder="Descreva os formatos sugeridos"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="teachingMethods" class="form-label">Quais metodologias de ensino serão aplicadas? (ex: aprendizagem ativa, estudo de caso)</label>
+          <textarea id="teachingMethods" name="teachingMethods" class="form-control form-textarea" placeholder="Explique as metodologias"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="resourcesNeeded" class="form-label">Há necessidade de recursos específicos? (ferramentas, materiais, laboratórios)</label>
+          <textarea id="resourcesNeeded" name="resourcesNeeded" class="form-control form-textarea" placeholder="Liste os recursos necessários"></textarea>
+        </div>
+      </div>
+
+      <!-- 5. Recursos, orçamento e cronograma -->
+      <div class="card">
+        <h2>5. Recursos, Orçamento e Cronograma</h2>
+        <div class="mb-3">
+          <label for="budget" class="form-label">Qual o orçamento disponível?</label>
+          <input type="text" id="budget" name="budget" class="form-control" placeholder="Valor aproximado" />
+        </div>
+        <div class="mb-3">
+          <label for="teamAvailable" class="form-label">Quais recursos humanos estão disponíveis para desenvolvimento e suporte?</label>
+          <textarea id="teamAvailable" name="teamAvailable" class="form-control form-textarea" placeholder="Descreva a equipe envolvida"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="timeline" class="form-label">Qual o cronograma esperado para entrega e implementação?</label>
+          <input type="text" id="timeline" name="timeline" class="form-control" placeholder="Datas ou períodos" />
+        </div>
+      </div>
+
+      <!-- 6. Avaliação e impacto -->
+      <div class="card">
+        <h2>6. Avaliação e Impacto</h2>
+        <div class="mb-3">
+          <label for="evaluationType" class="form-label">Como será feita a avaliação do treinamento? (formativa, somativa, autoavaliação)</label>
+          <textarea id="evaluationType" name="evaluationType" class="form-control form-textarea" placeholder="Descreva os métodos de avaliação"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="performanceIndicators" class="form-label">Quais indicadores de desempenho ou ROI serão monitorados?</label>
+          <textarea id="performanceIndicators" name="performanceIndicators" class="form-control form-textarea" placeholder="Liste indicadores"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="feedbackProcess" class="form-label">Como será coletado o feedback dos participantes?</label>
+          <textarea id="feedbackProcess" name="feedbackProcess" class="form-control form-textarea" placeholder="Explique o processo"></textarea>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-primary btn-lg" onclick="gerarArquivo()">Enviar Consultoria</button>
+        <a href="index.html" class="btn btn-secondary btn-lg">⬅️ Voltar para Página Inicial</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function gerarArquivo() {
+      const form = document.getElementById('formulario');
+      const dados = new FormData(form);
+
+      const titulosCampos = {
+        organizationalContext: "Qual o contexto organizacional e cultural que pode impactar a aprendizagem?",
+        organizationalBarriers: "Quais barreiras culturais ou organizacionais podem dificultar a mudança?",
+        strategyAlignment: "Como o treinamento se alinha à estratégia geral da empresa?",
+
+        audienceProfiles: "Quais perfis e características do público-alvo? (nível, função, idioma, limitações)",
+        learningStyles: "Quais são os estilos de aprendizagem preferidos?",
+        limitations: "Há limitações físicas, cognitivas ou tecnológicas?",
+        motivationLevel: "Qual o nível atual de motivação e engajamento para o tema?",
+
+        businessProblem: "Qual o problema ou oportunidade de negócio?",
+        trainingProblem: "Esse problema é realmente de capacitação? Explique.",
+        metricsImpacted: "Quais métricas de negócio são impactadas?",
+        specificObjectives: "Quais competências específicas precisam ser desenvolvidas? (conhecimentos, habilidades, atitudes)",
+        successCriteria: "Como será medido o sucesso da aprendizagem?",
+
+        preferredFormats: "Quais formatos são mais adequados? (presencial, e-learning, blended, microlearning)",
+        teachingMethods: "Quais metodologias de ensino serão aplicadas? (ex: aprendizagem ativa, estudo de caso)",
+        resourcesNeeded: "Há necessidade de recursos específicos? (ferramentas, materiais, laboratórios)",
+
+        budget: "Qual o orçamento disponível?",
+        teamAvailable: "Quais recursos humanos estão disponíveis para desenvolvimento e suporte?",
+        timeline: "Qual o cronograma esperado para entrega e implementação?",
+
+        evaluationType: "Como será feita a avaliação do treinamento? (formativa, somativa, autoavaliação)",
+        performanceIndicators: "Quais indicadores de desempenho ou ROI serão monitorados?",
+        feedbackProcess: "Como será coletado o feedback dos participantes?"
+      };
+
+      let conteudo = 'Formulário de Consultoria em Solução de Aprendizagem\n\n';
+
+      for (const [chave, valor] of dados.entries()) {
+        let titulo = titulosCampos[chave] || chave;
+        conteudo += `${titulo}:\n${valor}\n\n`;
+      }
+
+      const blob = new Blob([conteudo], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.download = 'consultoria_aprendizagem.txt';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Direcionadores Estratégicos</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* Variáveis de cores (CSS custom properties) */
+    :root {
+      --color-primary: #0059ff;        /* vermelho vibrante */
+      --color-primary-hover: #0059ff;  /* vermelho mais escuro para hover */
+      --color-bg-light: #f9f9f9;       /* fundo claro neutro */
+      --color-text-dark: #222222;      /* texto escuro */
+      --color-text-muted: #555555;     /* texto secundário */
+      --color-border: #ddd;            /* bordas suaves */
+      --color-focus: #0059ff;          /* foco nos inputs */
+      --color-check-bg: #0059ff;       /* cor do checkmark */
+      --color-check-bg-disabled: #ccc; /* checkmark desabilitado */
+    }
+
+    /* Reset básico para fontes e box-sizing */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--color-bg-light);
+      color: var(--color-text-dark);
+      line-height: 1.5;
+      margin: 0;
+      padding: 1rem 0 4rem; /* espaço para footer */
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    header p {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+      margin-top: 0;
+    }
+
+    /* Section titles */
+    .section-title {
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 1.75rem;
+      border-bottom: 3px solid var(--color-primary);
+      padding-bottom: 0.25rem;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+
+    /* Form labels */
+    label.form-label {
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: var(--color-text-dark);
+      user-select: none;
+    }
+
+    /* Inputs e textareas */
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--color-text-dark);
+      resize: vertical;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-focus);
+      box-shadow: 0 0 5px var(--color-focus);
+      background-color: #fff;
+    }
+
+    textarea {
+      min-height: 3.5rem;
+      line-height: 1.4;
+    }
+
+    /* Card */
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      user-select: text;
+    }
+
+    /* Botão customizado */
+    .btn-custom {
+      background-color: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.25s ease;
+      display: inline-block;
+      user-select: none;
+      box-shadow: 0 3px 8px rgb(199 0 0 / 0.6);
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 3rem;
+      display: block;
+    }
+
+    .btn-custom:hover,
+    .btn-custom:focus {
+      background-color: var(--color-primary-hover);
+      box-shadow: 0 3px 12px rgb(160 0 0 / 0.8);
+      outline: none;
+    }
+
+    /* Checklist */
+    .form-check {
+      margin-bottom: 0.7rem;
+      user-select: none;
+    }
+
+    .form-check-input {
+      accent-color: var(--color-check-bg);
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      transition: accent-color 0.3s ease;
+    }
+
+    .form-check-input:disabled {
+      accent-color: var(--color-check-bg-disabled);
+      cursor: not-allowed;
+    }
+
+    .form-check-label {
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #222222cc;
+      color: #ddd;
+      font-size: 0.875rem;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      user-select: none;
+      z-index: 1000;
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .card {
+        padding: 1.5rem 1.75rem;
+      }
+      .btn-custom {
+        max-width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Direcionadores Estratégicos</h1>
+      <p>Template para Análise e Planejamento de Projetos de Treinamento</p>
+    </header>
+
+    <div class="card">
+      <h2 class="section-title">📋 Solução de Aprendizagem</h2>
+      
+      <label for="problemaOportunidade" class="form-label">🎯 Problema ou oportunidade identificada:</label>
+      <textarea id="problemaOportunidade" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="problemaCapacitacao" class="form-label">🤔 É realmente um problema de capacitação? (ou há fatores de gestão/processo?)</label>
+      <textarea id="problemaCapacitacao" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="metricasImpactadas" class="form-label">📊 Métricas impactadas:</label>
+      <textarea id="metricasImpactadas" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="publicoAlvo" class="form-label">👥 Público-alvo:</label>
+      <textarea id="publicoAlvo" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="conhecimentosPrevios" class="form-label">🎓 Conhecimentos prévios:</label>
+      <textarea id="conhecimentosPrevios" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="resultadosEsperados" class="form-label">🏁 Resultados esperados após o treinamento:</label>
+      <textarea id="resultadosEsperados" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="solucaoSugerida" class="form-label">📦 Solução sugerida:</label>
+      <textarea id="solucaoSugerida" rows="3" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🧱 Template ADDIE (resumo geral do projeto)</h2>
+
+      <label for="tituloProjeto" class="form-label">Título do Projeto:</label>
+      <input type="text" id="tituloProjeto" class="form-control mb-3" placeholder="Título do projeto" />
+
+      <label for="analise" class="form-label">🔍 Análise:</label>
+      <textarea id="analise" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="design" class="form-label">🎨 Design:</label>
+      <textarea id="design" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="desenvolvimento" class="form-label">🛠 Desenvolvimento:</label>
+      <textarea id="desenvolvimento" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="implementacao" class="form-label">🚀 Implementação:</label>
+      <textarea id="implementacao" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="avaliacao" class="form-label">📈 Avaliação:</label>
+      <textarea id="avaliacao" rows="2" class="form-control" placeholder="Descreva aqui..."></textarea>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🎬 Roteiro de Solução de Aprendizagem</h2>
+
+      <label for="situacaoAtual" class="form-label">1. Situação Atual:</label>
+      <textarea id="situacaoAtual" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="objetivoNegocio" class="form-label">2. Objetivo de Negócio:</label>
+      <textarea id="objetivoNegocio" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="conhecerFazerSentir" class="form-label">3. O que o colaborador precisa saber, fazer e sentir:</label>
+      <textarea id="conhecerFazerSentir" rows="3" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="solucaoAprendizagem" class="form-label">4. Solução de Aprendizagem sugerida:</label>
+      <textarea id="solucaoAprendizagem" rows="3" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="obstaculosRestricoes" class="form-label">5. Obstáculos e restrições:</label>
+      <textarea id="obstaculosRestricoes" rows="3" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="indicadoresSucesso" class="form-label">6. Indicadores de sucesso:</label>
+      <textarea id="indicadoresSucesso" rows="2" class="form-control mb-3" placeholder="Descreva aqui..."></textarea>
+
+      <label for="planoAcao" class="form-label">7. Plano de ação com stakeholders:</label>
+      <textarea id="planoAcao" rows="3" class="form-control" placeholder="Descreva aqui..."></textarea>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🧪 Checklist de Qualidade Instrucional</h2>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkMensagem" />
+        <label class="form-check-label" for="checkMensagem">A mensagem está clara e objetiva?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkObjetivos" />
+        <label class="form-check-label" for="checkObjetivos">Os objetivos estão alinhados com as ações esperadas?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkLinguagem" />
+        <label class="form-check-label" for="checkLinguagem">A linguagem está adequada ao público?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkExemplos" />
+        <label class="form-check-label" for="checkExemplos">Há exemplos práticos ou simulações?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkNavegacao" />
+        <label class="form-check-label" for="checkNavegacao">A navegação é intuitiva (para soluções digitais)?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkAvaliacoes" />
+        <label class="form-check-label" for="checkAvaliacoes">Avaliações estão alinhadas com os objetivos?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkFeedback" />
+        <label class="form-check-label" for="checkFeedback">Há feedback claro nas atividades?</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkElementosVisuais" />
+        <label class="form-check-label" for="checkElementosVisuais">Todos os elementos visuais são acessíveis e consistentes?</label>
+      </div>
+    </div>
+
+    <button id="btnGerar" class="btn btn-custom" type="button">Gerar arquivo TXT</button>
+    <a href="index.html" class="btn-voltar">⬅️ Voltar para Página Inicial</a>  </div>
+
+
+
+
+  <footer>
+    &copy; 2025 Direcionadores Estratégicos | Desenvolvido por ChatGPT
+  </footer>
+
+  <script>
+    function checkboxText(id, label) {
+      const el = document.getElementById(id);
+      return el && el.checked ? `✅ ${label}` : `❌ ${label}`;
+    }
+
+    document.getElementById('btnGerar').addEventListener('click', () => {
+      const conteudo = `
+Solução de Aprendizagem:
+Objetivo: Identificar se a demanda é realmente de aprendizagem e mapear a melhor solução.
+
+🎯 Problema ou oportunidade identificada:
+${document.getElementById('problemaOportunidade').value.trim()}
+
+🤔 É realmente um problema de capacitação? (ou há fatores de gestão/processo?)
+${document.getElementById('problemaCapacitacao').value.trim()}
+
+📊 Métricas impactadas:
+${document.getElementById('metricasImpactadas').value.trim()}
+
+👥 Público-alvo:
+${document.getElementById('publicoAlvo').value.trim()}
+
+🎓 Conhecimentos prévios:
+${document.getElementById('conhecimentosPrevios').value.trim()}
+
+🏁 Resultados esperados após o treinamento:
+${document.getElementById('resultadosEsperados').value.trim()}
+
+📦 Solução sugerida:
+${document.getElementById('solucaoSugerida').value.trim()}
+
+🧱 Template ADDIE (resumo geral do projeto):
+Título do Projeto: ${document.getElementById('tituloProjeto').value.trim()}
+
+🔍 Análise:
+${document.getElementById('analise').value.trim()}
+
+🎨 Design:
+${document.getElementById('design').value.trim()}
+
+🛠 Desenvolvimento:
+${document.getElementById('desenvolvimento').value.trim()}
+
+🚀 Implementação:
+${document.getElementById('implementacao').value.trim()}
+
+📈 Avaliação:
+${document.getElementById('avaliacao').value.trim()}
+
+🎬 Roteiro de Solução de Aprendizagem:
+1. Situação Atual:
+${document.getElementById('situacaoAtual').value.trim()}
+
+2. Objetivo de Negócio:
+${document.getElementById('objetivoNegocio').value.trim()}
+
+3. O que o colaborador precisa saber, fazer e sentir:
+${document.getElementById('conhecerFazerSentir').value.trim()}
+
+4. Solução de Aprendizagem sugerida:
+${document.getElementById('solucaoAprendizagem').value.trim()}
+
+5. Obstáculos e restrições:
+${document.getElementById('obstaculosRestricoes').value.trim()}
+
+6. Indicadores de sucesso:
+${document.getElementById('indicadoresSucesso').value.trim()}
+
+7. Plano de ação com stakeholders:
+${document.getElementById('planoAcao').value.trim()}
+
+🧪 Checklist de Qualidade Instrucional:
+${checkboxText('checkMensagem', 'A mensagem está clara e objetiva?')}
+${checkboxText('checkObjetivos', 'Os objetivos estão alinhados com as ações esperadas?')}
+${checkboxText('checkLinguagem', 'A linguagem está adequada ao público?')}
+${checkboxText('checkExemplos', 'Há exemplos práticos ou simulações?')}
+${checkboxText('checkNavegacao', 'A navegação é intuitiva (para soluções digitais)?')}
+${checkboxText('checkAvaliacoes', 'Avaliações estão alinhadas com os objetivos?')}
+${checkboxText('checkFeedback', 'Há feedback claro nas atividades?')}
+${checkboxText('checkElementosVisuais', 'Todos os elementos visuais são acessíveis e consistentes?')}
+`;
+
+      const blob = new Blob([conteudo], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "direcionadores_estrategicos.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    });
+  </script>
+</body>
+</html>

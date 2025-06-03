@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reuniões Produtivas</title>
+  <style>
+    :root {
+      --azul: #005b96;
+      --cinza: #6c757d;
+      --fundo: #f4f6f8;
+      --branco: #ffffff;
+      --sombra: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--fundo);
+      color: #333;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--azul);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      user-select: none;
+    }
+
+    .section {
+      background: var(--branco);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px var(--sombra);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      transition: border 0.3s, box-shadow 0.3s;
+      background: #fff;
+    }
+
+    textarea:focus,
+    input:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 8px rgba(0, 91, 150, 0.2);
+      outline: none;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    button {
+      flex: 1 1 200px;
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: var(--azul);
+      outline: none;
+    }
+
+    .btn-voltar {
+      background: var(--cinza);
+    }
+
+    .btn-voltar:hover,
+    .btn-voltar:focus-visible {
+      background: #555d63;
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Reunião Produtiva</h1>
+
+  <div class="section">
+    <div>
+      <label for="data">Data:</label>
+      <input type="date" id="data" />
+    </div>
+
+    <div>
+      <label for="participantes">Participantes:</label>
+      <textarea id="participantes" rows="3" placeholder="Nomes separados por vírgula"></textarea>
+    </div>
+
+    <div>
+      <label for="objetivo">Objetivo da Reunião:</label>
+      <textarea id="objetivo" rows="3"></textarea>
+    </div>
+
+    <div>
+      <label for="pontos">Pontos Principais:</label>
+      <textarea id="pontos" rows="4"></textarea>
+    </div>
+
+    <div>
+      <label for="decisoes">Decisões Tomadas:</label>
+      <textarea id="decisoes" rows="4"></textarea>
+    </div>
+
+    <div>
+      <label for="proximos">Próximos Passos (com responsáveis e prazos):</label>
+      <textarea id="proximos" rows="4"></textarea>
+    </div>
+
+    <div class="button-group">
+      <button onclick="exportar()">Exportar</button>
+      <button class="btn-voltar" onclick="window.location.href='index.html'">⬅️ Voltar para Página Inicial</button>
+    </div>
+  </div>
+
+  <script>
+    function exportar() {
+      const data = document.getElementById("data").value;
+      const participantes = document.getElementById("participantes").value;
+      const objetivo = document.getElementById("objetivo").value;
+      const pontos = document.getElementById("pontos").value;
+      const decisoes = document.getElementById("decisoes").value;
+      const proximos = document.getElementById("proximos").value;
+
+      const texto = `
+Reunião
+Data: ${data}
+Participantes: ${participantes}
+Objetivo: ${objetivo}
+
+Pontos Principais:
+${pontos}
+
+Decisões:
+${decisoes}
+
+Próximos Passos:
+${proximos}
+`;
+      const blob = new Blob([texto], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.download = "reuniao.txt";
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }
+
+    function voltarIndex() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
